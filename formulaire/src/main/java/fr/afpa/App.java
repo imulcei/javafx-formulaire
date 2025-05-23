@@ -77,10 +77,10 @@ public class App extends Application {
 
         grid.setStyle("-fx-border-style: dotted;");
 
-        grid.add(labelCopy, 0, 1, 1, 1);
         grid.add(labelUser, 0, 0, 1, 1);
-        grid.add(textFieldUser, 1, 0, 2, 1);
-        grid.add(textFieldCopy, 1, 1, 2, 1);
+        grid.add(labelCopy, 0, 1, 1, 1);
+        grid.add(textFieldUser, 1, 0, 1, 1);
+        grid.add(textFieldCopy, 1, 1, 1, 1);
         grid.add(vbox, 2, 0, 1, 2);
         grid.setGridLinesVisible(true);
 
@@ -88,8 +88,9 @@ public class App extends Application {
         GridPane.setValignment(labelUser, VPos.CENTER);
         GridPane.setValignment(textFieldUser, VPos.CENTER);
         GridPane.setValignment(textFieldCopy, VPos.CENTER);
+        GridPane.setValignment(vbox, VPos.CENTER);
 
-        // grid.setAlignment(Pos.CENTER);
+        //grid.setAlignment(Pos.CENTER);
         grid.setHgap(30);
 
         Scene scene = new Scene(grid);
