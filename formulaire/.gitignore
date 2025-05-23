@@ -1,0 +1,5 @@
+# Dossier contenant les fichiers compilés (par nécessaire non plus pour les autres puisque tout le monde recompile de son côté)
+target/
+
+# Dossier de configuration de l'IDE (pas nécessaire pour les autres dév')
+.vscode/
