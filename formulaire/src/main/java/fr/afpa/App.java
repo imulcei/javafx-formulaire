@@ -4,19 +4,15 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -68,6 +64,7 @@ public class App extends Application {
         });
 
         VBox vbox = new VBox(buttonCopy, buttonDelete, buttonQuit);
+        vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
         buttonCopy.setPrefSize(100, 30);
         buttonDelete.setPrefSize(100, 30);
@@ -75,7 +72,12 @@ public class App extends Application {
 
         GridPane grid = new GridPane();
 
-        grid.setStyle("-fx-border-style: dotted;");
+        // Ajout de contraintes pour avec les lignes équitablement dimensionnées
+        RowConstraints rowConstraint = new RowConstraints();
+        // Régler le fait que les ligne prennent 50% de l'espace disponible
+        rowConstraint.setPercentHeight(50);
+        // Ajout de la même 2 fois -> 1 par ligne
+        grid.getRowConstraints().addAll(rowConstraint, rowConstraint);
 
         grid.add(labelUser, 0, 0, 1, 1);
         grid.add(labelCopy, 0, 1, 1, 1);
@@ -93,7 +95,12 @@ public class App extends Application {
         //grid.setAlignment(Pos.CENTER);
         grid.setHgap(30);
 
-        Scene scene = new Scene(grid);
+        // WIP (Ludovic) : tentative de centrage du formulaire
+        // idée : jouer vacec un "pane" container
+        BorderPane mainContainer = new BorderPane(grid); 
+        mainContainer.setCenter(grid);
+
+        Scene scene = new Scene(mainContainer);
         stage.setScene(scene);
 
         stage.show();
